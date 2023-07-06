@@ -1,3 +1,4 @@
 # Repository Contents  
 
-- Shell Basics
+- Shell Basics.
+- Shell Permissions.
