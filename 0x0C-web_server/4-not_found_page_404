@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script installs nginx web server
+# creates html file
+# start the web server
+#
+
+apt-get update
+apt-get install nginx -y
+echo "Hello World!" > /var/www/html/index.html
+sed -i '/^server {$/a\
+\n\tlocation /redirect_me {\
+\t\trewrite ^/redirect_me$ http://example.com permanent;\
+\t}\n' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sed -i '/^server {$/a\
+\terror_page 404 /404.html;\
+\tlocation = /404.html {\
+\t\troot /var/www/html;\
+\t}' /etc/nginx/sites-available/default
+systemctl stop nginx
+systemctl start nginx
