@@ -7,8 +7,6 @@
 apt-get update
 apt-get install nginx -y
 echo "Hello World!" > /var/www/html/index.html
-sed -i '/^server {$/a\
-\n\tlocation /redirect_me {\
-\t\trewrite ^/redirect_me$ http://example.com permanent;\
-\t}\n' /etc/nginx/sites-available/default
-systemctl restart nginx
+sed -i '/^server {$/a\\tlocation /redirect_me {\n\t\trewrite ^/redirect_me$ http://example.com permanent;\n\t}\n' /etc/nginx/sites-available/default
+systemctl stop nginx
+systemctl start nginx
