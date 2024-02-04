@@ -4,8 +4,8 @@
 # configure a redirect called /redirect_me
 # start the web server
 
-apt-get -y update
+apt-get update
 apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.html
-sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/ammarelbadry1 permanent;/" /etc/nginx/sites-available/default
+sed -i "s/server_name _;/server_name _;\n\n\trewrite ^\/redirect_me https:\/\/github.com\/ammarelbadry1 permanent;/" /etc/nginx/sites-available/default
 service nginx restart
