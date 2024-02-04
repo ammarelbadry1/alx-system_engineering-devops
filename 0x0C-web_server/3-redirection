@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-# This script installs nginx web server
-# creates html file
-# start the web server
-
-apt-get update
-apt-get install nginx -y
-echo "Hello World!" > /var/www/html/index.html
-sed -i '/^server {$/a\\trewrite ^/redirect_me$ http://example.com permanent;\n' /etc/nginx/sites-available/default
-service nginx restart
+# Script that installs Nginx server and redirects /redirect_me
+apt-get -y update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/ammarelbadry1 permanent;/" /etc/nginx/sites-available/default
+service nginx start
