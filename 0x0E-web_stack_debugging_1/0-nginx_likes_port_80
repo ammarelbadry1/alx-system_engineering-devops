@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script makes the nginx web server running on port 80
+
+service nginx restart
