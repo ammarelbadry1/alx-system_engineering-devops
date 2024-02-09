@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script installs nginx web server
-# creates html file
+# creates index.html file
 # start the web server
 
 apt-get update
