@@ -2,8 +2,8 @@
 # This script configures a container to run nginx as nginx user and
 # makes nginx listening on all active IPs on port 8080
 
-chmod 777 /etc/nginx/nginx.conf
-chown nginx:nginx /etc/nginx/nginx.conf
+chmod 666 /etc/nginx/nginx.conf
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
-pkill -9 apache
-su nginx -c "service nginx restart"
+pkill apache2
+sudo -u nginx service nginx restart
