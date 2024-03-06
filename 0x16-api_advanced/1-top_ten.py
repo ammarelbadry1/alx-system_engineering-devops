@@ -21,9 +21,10 @@ def top_ten(subreddit):
 
     res_obj = r.json()
 
-    top_10 = res_obj["data"]["children"]
-    if len(top_10) == 0:
+    top_10_posts = res_obj.get("data").get("children")
+
+    if len(top_10_posts) == 0:
         print("None")
     else:
-        for post in top_10:
-            print(post["data"]["title"])
+        for post in top_10_posts:
+            print(post.get("data").get("title"))
