@@ -2,7 +2,6 @@
 """This module contains a function that queries the Reddit API
 and returns the number of subscribers for a given subreddit."""
 import requests
-import pprint
 
 
 def number_of_subscribers(subreddit):
@@ -17,9 +16,4 @@ def number_of_subscribers(subreddit):
 
     res_obj = r.json()
 
-    if 'data' not in res_obj:
-        return 1
-    if 'subscribers' not in res_obj.get('data'):
-        return 2
-
-    return res.json()["data"]["subscribers"]
+    return res_obj["data"]["subscribers"]
